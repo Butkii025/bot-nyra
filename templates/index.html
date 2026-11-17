@@ -1,74 +1,289 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Personal Assistant</title>
+    <meta name="theme-color" content="#090b16">
+    <meta name="description" content="BOT NYRA - Your intelligent AI companion for everyday questions, ideas and productivity.">
+
+    <title>BOT NYRA - Your AI Companion</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png"
+      href="{{ url_for('static', filename='logo.png') }}">
 </head>
+
 <body>
-    <h1 class="main-heading">AI Personal Assistant</h1>
 
-    <div class="container">
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
 
-        <h2>Ask Anything</h2>
-        <form id="askForm">
-            <input type="text" name="question" placeholder="Ask anything..." required>
-            <button type="submit">Ask</button>
-        </form>
-        <p id="ans-loading" style="display: none;">Processing...</p>
-        <p id="answer"></p>
+    <header class="navbar">
+        <a href="/" class="brand">
+            <img
+  src="{{ url_for('static', filename='logo.png') }}"
+  alt="BOT NYRA Logo"
+  class="brand-icon"
+>
+            <span>BOT <span class="brand-highlight">NYRA</span></span>
+        </a>
 
-        <hr>
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Your AI Companion
+        </div>
+    </header>
 
-        <h2>Summarize Email</h2>
-        <form id="emailForm">
-            <textarea type="text" name="email" placeholder="Paste your email here.." required></textarea>
-            <button type="submit">Summarize</button>
-        </form>
-        <p id="summary-loading" style="display: none;">Processing...</p>
-        <p id="summary"></p>
+    <main class="main-container">
 
-    </div>
+        <section class="hero">
+            <div class="hero-badge">
+                YOUR PERSONAL AI COMPANION
+            </div>
 
-<script>
-    document.getElementById("askForm").onsubmit = async (e) => {
-        e.preventDefault();
-        let formData = new FormData(e.target);
+            <h1>
+                Your world.<br>
+                <span>Your AI. Your NYRA.</span>
+            </h1>
 
-        let loading = document.getElementById("ans-loading");
-        loading.style.display = "block";   // show loader
+            <p>
+                Meet NYRA ~ your intelligent companion for everyday
+                questions, creative ideas and effortless productivity.
+            </p>
+        </section>
 
-        let res = await fetch("/ask", {
-            method: "POST",
-            body: formData
+        <section class="tools-grid">
+
+            <!-- ASK NYRA -->
+            <article class="tool-card ask-card">
+
+                <div class="card-top">
+                    <div class="tool-icon purple-icon">✧</div>
+                    <span class="tool-label">AI CONVERSATION</span>
+                </div>
+
+                <h2>Ask NYRA Anything</h2>
+
+                <p class="card-description">
+                    Curious about something? Talk to NYRA and explore
+                    thoughtful answers, explanations and creative ideas.
+                </p>
+
+                <form id="askForm">
+
+                    <label for="question">What's on your mind?</label>
+
+                    <textarea
+                        id="question"
+                        name="question"
+                        placeholder="Hey NYRA, tell me something interesting..."
+                        rows="4"
+                        required
+                    ></textarea>
+
+                    <button type="submit" class="primary-button" id="askButton">
+                        <span>Talk to NYRA</span>
+                        <span class="button-arrow">↗</span>
+                    </button>
+
+                </form>
+
+                <div class="loading" id="ans-loading" hidden>
+                    <span class="spinner"></span>
+                    NYRA is thinking...
+                </div>
+
+                <div class="result-box" id="answerBox" hidden>
+                    <div class="result-heading">
+                        <span>✦ NYRA's Response</span>
+                        <button type="button" class="copy-button" data-copy="answer">Copy</button>
+                    </div>
+                    <div class="result-content" id="answer"></div>
+                </div>
+
+            </article>
+
+
+            <!-- EMAIL SUMMARIZER -->
+            <article class="tool-card email-card">
+
+                <div class="card-top">
+                    <div class="tool-icon blue-icon">✉</div>
+                    <span class="tool-label">SMART PRODUCTIVITY</span>
+                </div>
+
+                <h2>Email Summarizer</h2>
+
+                <p class="card-description">
+                    Too much to read? Let NYRA turn lengthy emails
+                    into short, clear and meaningful summaries.
+                </p>
+
+                <form id="emailForm">
+
+                    <label for="email">Paste your email</label>
+
+                    <textarea
+                        id="email"
+                        name="email"
+                        placeholder="Paste your email content here..."
+                        rows="4"
+                        required
+                    ></textarea>
+
+                    <button type="submit" class="primary-button blue-button" id="emailButton">
+                        <span>Summarize Email</span>
+                        <span class="button-arrow">↗</span>
+                    </button>
+
+                </form>
+
+                <div class="loading" id="summary-loading" hidden>
+                    <span class="spinner"></span>
+                    NYRA is summarizing your email...
+                </div>
+
+                <div class="result-box" id="summaryBox" hidden>
+                    <div class="result-heading">
+                        <span>✦ Your Email Summary</span>
+                        <button type="button" class="copy-button" data-copy="summary">Copy</button>
+                    </div>
+                    <div class="result-content" id="summary"></div>
+                </div>
+
+            </article>
+
+        </section>
+
+        <footer>
+            <div class="footer-line"></div>
+            <p>
+                Developed by
+                <a href="https://p-vijay.vercel.app"
+                    class="footer-brand"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Priyanshu
+                </a>
+            </p>
+            <span class="footer-caption">Your world. Your AI. Always by your side.</span>
+        </footer>
+
+    </main>
+
+
+    <script>
+
+        // Common AI form handler
+        async function handleAIForm({
+            formId,
+            endpoint,
+            loadingId,
+            resultBoxId,
+            resultId,
+            buttonId
+        }) {
+
+            const form = document.getElementById(formId);
+            const loading = document.getElementById(loadingId);
+            const resultBox = document.getElementById(resultBoxId);
+            const result = document.getElementById(resultId);
+            const button = document.getElementById(buttonId);
+
+            form.addEventListener("submit", async (event) => {
+
+                event.preventDefault();
+
+                const formData = new FormData(form);
+
+                loading.hidden = false;
+                resultBox.hidden = true;
+                button.disabled = true;
+
+                try {
+
+                    const response = await fetch(endpoint, {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.response || "Something went wrong.");
+                    }
+
+                    result.textContent = data.response;
+                    resultBox.hidden = false;
+
+                } catch (error) {
+
+                    result.textContent = "NYRA: " + error.message;
+                    resultBox.hidden = false;
+
+                } finally {
+
+                    loading.hidden = true;
+                    button.disabled = false;
+
+                }
+
+            });
+
+        }
+
+
+        // Ask NYRA
+        handleAIForm({
+            formId: "askForm",
+            endpoint: "/ask",
+            loadingId: "ans-loading",
+            resultBoxId: "answerBox",
+            resultId: "answer",
+            buttonId: "askButton"
         });
 
-        let data = await res.json();
-        document.getElementById("answer").innerText = data.response;
 
-        loading.style.display = "none";   // hide loader
-    };
+        // NYRA Email Summarizer
+        handleAIForm({
+            formId: "emailForm",
+            endpoint: "/summarize",
+            loadingId: "summary-loading",
+            resultBoxId: "summaryBox",
+            resultId: "summary",
+            buttonId: "emailButton"
+        });
 
-document.getElementById("emailForm").onsubmit = async (e) => {
-    e.preventDefault();
-    let formData = new FormData(e.target);
 
-    let loading = document.getElementById("summary-loading");
-    loading.style.display = "block";
+        // Copy AI responses
+        document.querySelectorAll(".copy-button").forEach(button => {
 
-    let res = await fetch("/summarize", {
-        method: "POST",
-        body: formData
-    });
+            button.addEventListener("click", async () => {
 
-    let data = await res.json();
-    document.getElementById("summary").innerText = data.response;
+                const target = document.getElementById(button.dataset.copy);
 
-    loading.style.display = "none";   // hide loader
-};
+                try {
+                    await navigator.clipboard.writeText(target.innerText);
 
-</script>
+                    button.textContent = "Copied!";
+
+                    setTimeout(() => {
+                        button.textContent = "Copy";
+                    }, 1500);
+
+                } catch {
+                    button.textContent = "Copy failed";
+                }
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
