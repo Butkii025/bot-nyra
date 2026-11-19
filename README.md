@@ -1,3 +1,5 @@
+<img width="54" height="54" alt="Neon Orbital N Emblem" src="https://github.com/user-attachments/assets/642843ca-cc0a-4157-acb1-884126e9db89" />
+
 # BOT NYRA - Your AI Companion
 
 **BOT NYRA** is a lightweight AI assistant web app built with Flask. It helps with everyday questions, creative ideas and productivity, and comes with a built-in email summarizer.
@@ -74,6 +76,10 @@ python main.py
 ```
 
 Then open **http://127.0.0.1:5000** in your browser.
+
+## visual
+
+<img width="1207" height="835" alt="image" src="https://github.com/user-attachments/assets/73e56283-14c7-4be2-b054-b8d16002694b" />
 
 ---
 
