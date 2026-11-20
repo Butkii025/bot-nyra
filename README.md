@@ -18,9 +18,9 @@
 
 | Layer      | Technology                                  |
 |------------|---------------------------------------------|
-| Backend    | Python, [Flask](https://flask.palletsprojects.com/) |
-| AI         | [OpenAI](https://pypi.org/project/openai/) SDK and [Google GenAI](https://pypi.org/project/google-genai/) SDK |
-| Config     | [python-dotenv](https://pypi.org/project/python-dotenv/) |
+| Backend    | Python, Flask |
+| AI         | OpenAI and Google GenAI SDK |
+| Config     | python-dotenv |
 | Frontend   | HTML templates + static CSS/JS/assets       |
 
 ---
